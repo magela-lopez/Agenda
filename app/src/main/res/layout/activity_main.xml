@@ -13,15 +13,38 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="16dp"
-        android:background="#8F0303"
-        android:backgroundTint="#8F0303"
+        android:background="#651FFF"
+        android:backgroundTint="#651FFF"
         android:clickable="true"
+        android:tint="#651FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#651FFF"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/listContatos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            />
+    </FrameLayout>
+
+    <!--TextView
         android:id="@+id/lblAgendaTitle"
         android:layout_width="409dp"
         android:layout_height="54dp"
@@ -31,18 +54,11 @@
         android:textAlignment="center"
         android:textColor="#FDFDFD"
         android:textSize="35sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/listContatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listContatos"
-        android:layout_width="412dp"
-        android:layout_height="576dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAgendaTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
