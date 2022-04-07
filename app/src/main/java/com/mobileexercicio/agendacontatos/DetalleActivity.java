@@ -20,6 +20,7 @@ public class DetalleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle);
         //setContentView(R.layout.fragment_details);
 
+        getSupportActionBar().setTitle("Contatos");
 
         ActionBar actionBar = getSupportActionBar();
 

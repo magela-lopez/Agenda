@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("Contatos");
         contatos = findViewById(R.id.listContatos);
         String listContacts []= {"Magela","Carmen","Cirila","Gimena"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listContacts);
