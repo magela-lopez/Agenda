@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("contactoSeleccionado",nameContact);
+                FragmentDetails fragmentDetails = new FragmentDetails();
                 intent.putExtras(bundle);
                 startActivity(intent);
                 //finish();

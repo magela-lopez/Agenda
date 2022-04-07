@@ -35,6 +35,8 @@ public class DetalleActivity extends AppCompatActivity {
         actionBar.addTab(tab2);
 
 
+
+
     }
 
 }
