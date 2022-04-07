@@ -69,13 +69,13 @@
         android:id="@+id/imgContactDetalle"
         android:layout_width="104dp"
         android:layout_height="0dp"
-
         android:layout_marginBottom="51dp"
         app:layout_constraintBottom_toTopOf="@+id/lblNameDetalle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnBackDetalle"
-        app:srcCompat="@drawable/photo_profile" />
+        app:srcCompat="@drawable/photo_profile"
+        android:contentDescription="@string/todo" />
 
     <Button
         android:id="@+id/btnBackDetalle"
@@ -84,7 +84,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="73dp"
         android:layout_marginBottom="28dp"
-        android:backgroundTint="#F80202"
+        android:backgroundTint="#651FFF"
         app:icon="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/imgContactDetalle"
         app:layout_constraintStart_toStartOf="parent"

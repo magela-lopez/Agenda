@@ -1,6 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/lblNameAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:padding="5dp"
+        android:text="@string/nome"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPhoneAdd"
+        app:layout_constraintEnd_toStartOf="@+id/txtPersonNameAdd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblPhoneAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:padding="5dp"
+        android:text="@string/celular"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPhoneAdd"
+        app:layout_constraintEnd_toStartOf="@+id/txtPhoneAdd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblHomeAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="238dp"
+        android:padding="5dp"
+        android:text="@string/casa"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtAddressAdd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblEmailAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="5dp"
+        android:padding="5dp"
+        android:text="@string/email"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtEmailAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddressAdd" />
+
+    <ImageView
+        android:id="@+id/imgContactAddNew"
+        android:layout_width="104dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="189dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtAddressAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/photo_profile" />
+
+    <Button
+        android:id="@+id/btnCancellAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FBDFD2"
+        android:text="@string/cancelar"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSaveAddNew"
+        app:layout_constraintStart_toEndOf="@+id/lblEmailAddNew" />
+
+    <Button
+        android:id="@+id/btnSaveAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="58dp"
+        android:backgroundTint="#015C30"
+        android:text="@string/adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancellAddNew" />
+
+    <Button
+        android:id="@+id/btnBackAddNew"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="117dp"
+        android:backgroundTint="#3D5AFE"
+        app:icon="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toTopOf="@+id/lblNameAddNew"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/txtEmailAdd"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblEmailAddNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblEmailAddNew"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/txtAddressAdd"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblHomeAddNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblHomeAddNew"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/txtPhoneAdd"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="117dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/lblEmailAddNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblPhoneAddNew"
+        app:layout_constraintTop_toBottomOf="@+id/imgContactAddNew"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/txtPersonNameAdd"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblNameAddNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblNameAddNew" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

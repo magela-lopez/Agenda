@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     private ListView contatos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +32,23 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nameContact = adapter.getItem(position);
                 Toast.makeText(getApplicationContext(), nameContact, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("contactoSeleccionado",nameContact);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                //finish();
             }
         });
-
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingBtnAdd);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText( getApplicationContext(), "troca de tela", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AgregarActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }
