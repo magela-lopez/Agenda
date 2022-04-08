@@ -91,4 +91,16 @@ public class PessoaDB extends SQLiteOpenHelper {
         }
         return pessoas;
     }
+
+    public int delete(Pessoa pessoa){
+        SQLiteDatabase db = getWritableDatabase();
+        try {
+
+            int count = db.delete("pessoa", "id=?",new String[]{String.valueOf(pessoa.getId())});
+            Log.i(TAG,"Pessoa " + count + " deletada");
+            return count;
+        }finally {
+            db.close();
+        }
+    }
 }

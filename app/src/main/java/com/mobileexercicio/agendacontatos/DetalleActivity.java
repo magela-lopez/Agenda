@@ -29,12 +29,24 @@ public class DetalleActivity extends AppCompatActivity {
         tab.setTabListener(new MyTabListener(new FragmentDetails()));
         actionBar.addTab(tab);
 
+        //Envia información del contacto al fragment de detalles
+        Bundle bundle = getIntent().getExtras();
+        FragmentDetails fragmentDetails = new FragmentDetails();
+        fragmentDetails.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragDetails,fragmentDetails)
+                .commit();
+
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         ActionBar.Tab tab2 = actionBar.newTab().setText("Editar");
         tab2.setTabListener(new MyTabListener(new FragmentEdit()));
         actionBar.addTab(tab2);
 
-
+            Bundle bundle1 = getIntent().getExtras();
+            //Envia información del contacto al fragment de actualizar
+            FragmentEdit fragmentEdit = new FragmentEdit();
+            fragmentEdit.setArguments(bundle1);
+            getSupportFragmentManager().beginTransaction().add(R.id.layoutFragEdit,fragmentEdit)
+                    .commit();
 
 
     }

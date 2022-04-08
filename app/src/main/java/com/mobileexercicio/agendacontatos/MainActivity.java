@@ -2,6 +2,8 @@ package com.mobileexercicio.agendacontatos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,37 +41,46 @@ public class MainActivity extends AppCompatActivity {
 
         contatos = (ListView) findViewById(R.id.listContatos);
 
-        String[] array = new String[pessoas.size()];
+       String[] array = new String[pessoas.size()];
         for(int i=0;i<pessoas.size();i++){
-            array[i] = (String) pessoas.get(i).getNome();
+            array[i] = pessoas.get(i).getNome();
         }
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,array);
-            contatos.setAdapter(adapter);
+        contatos.setAdapter(adapter);
 
 
         contatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String nameContact = adapter.getItem(position);
-                Toast.makeText(getApplicationContext(), nameContact, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
-               /* Bundle bundle = new Bundle();
-                bundle.putString("contactoSeleccionado",nameContact);
-                FragmentDetails fragmentDetails = new FragmentDetails();
-                intent.putExtras(bundle);*/
-                startActivity(intent);
-                //finish();
-            }
+                String nome = adapter.getItem(position);
+
+                //Verifica la persona seleccionada (comparando la string con la lista de personas)
+                for (int i = 0; i < pessoas.size() ; i++) {
+                    if(nome.equals(pessoas.get(i).getNome())){
+
+                        // envia la información a la activity relacionada al fragment
+                        Intent intent = new Intent(getApplicationContext(),DetalleActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nome",pessoas.get(i).getNome());
+                        bundle.putString("celular",pessoas.get(i).getCelular());
+                        bundle.putString("endereco",pessoas.get(i).getEndereco());
+                        bundle.putString("email",pessoas.get(i).getEmail());
+                        bundle.putInt("id",pessoas.get(i).getId());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                }
+
+
+                }
         });
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingBtnAdd);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText( getApplicationContext(), "troca de tela", Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getApplicationContext(), AgregarActivity.class);
                 startActivity(intent);
-                //finish();
             }
         });
     }
@@ -111,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.action_search){
-
+            Toast.makeText(getApplicationContext(),"busca", Toast.LENGTH_SHORT).show();
 
         }else if(item.getItemId() == R.id.action_add){
             Intent intent = new Intent(getApplicationContext(), AgregarActivity.class);

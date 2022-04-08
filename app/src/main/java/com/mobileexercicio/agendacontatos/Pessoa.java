@@ -48,7 +48,7 @@ public class Pessoa implements Serializable {
         return endereco;
     }
 
-    public void setEndereco(String endereço) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 

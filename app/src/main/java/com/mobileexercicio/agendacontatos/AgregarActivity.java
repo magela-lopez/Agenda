@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,11 @@ public class AgregarActivity extends AppCompatActivity {
                 pessoa.setEmail(enderecoP.getText().toString());
                 pessoaDB.save(pessoa);
 
+                Toast.makeText(getApplicationContext(), "Contato salvo", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -56,7 +62,6 @@ public class AgregarActivity extends AppCompatActivity {
 
                 List<Pessoa> pessoas = pessoaDB.findAll();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("listContatos", (Serializable) pessoas);
                 startActivity(intent);
             }
         });
@@ -64,7 +69,7 @@ public class AgregarActivity extends AppCompatActivity {
         btnCancelarAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               nomeP.setText("");
+                nomeP.setText("");
                 celularP.setText("");
                 enderecoP.setText("");
                 emailP.setText("");

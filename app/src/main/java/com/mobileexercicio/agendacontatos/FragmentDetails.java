@@ -15,16 +15,49 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class FragmentDetails extends Fragment {
 
-    String nome;
-    String celular;
-    String endereço;
-    String email;
+    private static final String ARG_PARAM1 = "nome";
+    private static final String ARG_PARAM2 = "celular";
+    private static final String ARG_PARAM3 = "endereco";
+    private static final String ARG_PARAM4 = "email";
+
+    private String nome;
+    private String celular;
+    private String endereco;
+    private String email;
+
+    public FragmentDetails() {
+        // Required empty public constructor
+    }
+
+    public static FragmentDetails newInstance(String nome, String celular, String endereco, String email) {
+        FragmentDetails fragment = new FragmentDetails();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, nome);
+        args.putString(ARG_PARAM2, celular);
+        args.putString(ARG_PARAM3, endereco);
+        args.putString(ARG_PARAM4, email);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            nome = getArguments().getString(ARG_PARAM1);
+            celular = getArguments().getString(ARG_PARAM2);
+            endereco = getArguments().getString(ARG_PARAM3);
+            email = getArguments().getString(ARG_PARAM4);
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
+
         View view = inflater.inflate(R.layout.fragment_details, container, false);
         return view;
     }
@@ -34,6 +67,15 @@ public class FragmentDetails extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btnVoltar = view.findViewById(R.id.btnBackDetalle);
+        TextView lblNome = view.findViewById(R.id.lblNameDetalle);
+        TextView lblCelular = view.findViewById(R.id.lblPhoneDetalle);
+        TextView lblEndereco = view.findViewById(R.id.lblHomeDetalle);
+        TextView lblEmail = view.findViewById(R.id.lblEmailDetalle);
+
+        lblNome.setText(nome);
+        lblCelular.setText(celular);
+        lblEndereco.setText(endereco);
+        lblEmail.setText(email);
 
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +85,7 @@ public class FragmentDetails extends Fragment {
                 startActivity(intent);
             }
         });
+
 
 
     }
