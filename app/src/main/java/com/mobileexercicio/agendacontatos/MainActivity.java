@@ -17,20 +17,35 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private ListView contatos;
+    private PessoaDB pessoaDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("Contatos");
-        contatos = findViewById(R.id.listContatos);
-        String listContacts []= {"Magela","Carmen","Cirila","Gimena"};
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listContacts);
-        contatos.setAdapter(adapter);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Contatos");
+        pessoaDB = new PessoaDB(this);
+
+        List<Pessoa> pessoas = pessoaDB.findAll();
+
+        contatos = (ListView) findViewById(R.id.listContatos);
+
+        String[] array = new String[pessoas.size()];
+        for(int i=0;i<pessoas.size();i++){
+            array[i] = (String) pessoas.get(i).getNome();
+        }
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,array);
+            contatos.setAdapter(adapter);
+
 
         contatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -38,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 String nameContact = adapter.getItem(position);
                 Toast.makeText(getApplicationContext(), nameContact, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
-                Bundle bundle = new Bundle();
+               /* Bundle bundle = new Bundle();
                 bundle.putString("contactoSeleccionado",nameContact);
                 FragmentDetails fragmentDetails = new FragmentDetails();
-                intent.putExtras(bundle);
+                intent.putExtras(bundle);*/
                 startActivity(intent);
                 //finish();
             }
